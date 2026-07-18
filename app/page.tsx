@@ -1182,7 +1182,7 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
                   <div style={{ textAlign: "center", padding: "20px" }}>
                     <h4 style={{ color: "var(--accent)", marginBottom: "12px", fontSize: "1.5rem" }}>Inquiry Submitted!</h4>
                     <p style={{ color: "var(--primary-light)" }}>
-                      Thanks for reaching out. We will review your category availability and contact you shortly.
+                      Thanks for reaching out. We will review your request and contact you shortly.
                     </p>
                   </div>
                 ) : (

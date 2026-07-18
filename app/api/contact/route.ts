@@ -52,7 +52,7 @@ export async function POST(req: Request) {
       try {
         await fetch(process.env.GOOGLE_SHEETS_WEBHOOK_URL, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
           body: JSON.stringify({
             town: townName,
             businessName: business,
@@ -61,6 +61,7 @@ export async function POST(req: Request) {
             phone: phone || "",
             message: message || "",
           }),
+          redirect: "follow"
         });
       } catch (sheetErr) {
         console.error("Failed to forward payload to Google Sheets webhook:", sheetErr);
