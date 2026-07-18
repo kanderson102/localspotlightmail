@@ -18,12 +18,17 @@ export async function POST(req: Request) {
     // Subject line formula: "The X Spotlight inquiry - Y"
     const subjectLine = `The ${townName} Spotlight inquiry - ${business}`;
 
+    // Parse recipients from NOTIFICATION_EMAILS env var or default
+    const recipients = process.env.NOTIFICATION_EMAILS
+      ? process.env.NOTIFICATION_EMAILS.split(",").map((e) => e.trim())
+      : ["kyle@localspotlightmail.com"];
+
     // Initialize Resend if API key is configured
     if (process.env.RESEND_API_KEY) {
       const resend = new Resend(process.env.RESEND_API_KEY);
       await resend.emails.send({
         from: "Local Spotlight Mail <contact@localspotlightmail.com>",
-        to: ["kyle@localspotlightmail.com"],
+        to: recipients,
         replyTo: email,
         subject: subjectLine,
         html: `
