@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { campaignRoutes, CampaignRoute, PostalRoute, PostcardSlot } from "../data/routes";
+import { campaignRoutes, CampaignRoute, PostcardSlot } from "../data/routes";
 import { faqs } from "../data/faq";
 import { testimonials } from "../data/testimonials";
 import { townAverages, TownAverage, getTownAverage } from "../data/townAverages";
@@ -194,129 +194,8 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
     }
   };
 
-  // CUSTOM POSTCARD PREVIEW LAYOUT WITH SUPABASE IMAGES ASSOCIATED:
-  const cardSlotsLayout = [
-    {
-      id: "s1",
-      x: 1.33,
-      y: 1.77,
-      w: 23.33,
-      h: 42.22,
-      type: "standard",
-      label: "Standard Slot",
-      soldFront: false,
-      soldBack: false,
-      bizFront: null,
-      bizBack: null,
-      adImageUrlFront: null,
-      adImageUrlBack: null
-    },
-    {
-      id: "s2",
-      x: 26.0,
-      y: 1.77,
-      w: 23.33,
-      h: 42.22,
-      type: "standard",
-      label: "Standard Slot",
-      soldFront: true,
-      soldBack: false,
-      bizFront: "McCoy Roofing",
-      bizBack: null,
-      adImageUrlFront: "https://rtecuplwxeijdkvfllcq.supabase.co/storage/v1/object/public/gallery/slot-1779458111640-McCoy_9X12.png",
-      adImageUrlBack: null
-    },
-    {
-      id: "s3",
-      x: 50.66,
-      y: 1.77,
-      w: 23.33,
-      h: 42.22,
-      type: "standard",
-      label: "Standard Slot",
-      soldFront: false,
-      soldBack: false,
-      bizFront: null,
-      bizBack: null,
-      adImageUrlFront: null,
-      adImageUrlBack: null
-    },
-    {
-      id: "s4",
-      x: 75.33,
-      y: 1.77,
-      w: 23.33,
-      h: 42.22,
-      type: "standard",
-      label: "Standard Slot",
-      soldFront: false,
-      soldBack: false,
-      bizFront: null,
-      bizBack: null,
-      adImageUrlFront: null,
-      adImageUrlBack: null
-    },
-    {
-      id: "s5",
-      x: 1.33,
-      y: 56.0,
-      w: 48.0,
-      h: 42.22,
-      type: "double",
-      label: "Double Slot",
-      soldFront: true,
-      soldBack: false,
-      bizFront: "Laser Core Engraving",
-      bizBack: null,
-      adImageUrlFront: "https://rtecuplwxeijdkvfllcq.supabase.co/storage/v1/object/public/gallery/slot-1778894654970-Winner.png",
-      adImageUrlBack: null
-    },
-    {
-      id: "s6",
-      x: 50.66,
-      y: 56.0,
-      w: 23.33,
-      h: 42.22,
-      type: "standard",
-      label: "Standard Slot",
-      soldFront: false,
-      soldBack: true,
-      bizFront: null,
-      bizBack: "Revitalift Medspa",
-      adImageUrlFront: null,
-      adImageUrlBack: "https://rtecuplwxeijdkvfllcq.supabase.co/storage/v1/object/public/gallery/slot-1780607874063-Cami_Moran_9X12__2_.png"
-    },
-    {
-      id: "s7",
-      x: 75.33,
-      y: 56.0,
-      w: 23.33,
-      h: 20.11,
-      type: "half",
-      label: "Half Slot",
-      soldFront: false,
-      soldBack: false,
-      bizFront: null,
-      bizBack: null,
-      adImageUrlFront: null,
-      adImageUrlBack: null
-    },
-    {
-      id: "s8",
-      x: 75.33,
-      y: 78.11,
-      w: 23.33,
-      h: 20.11,
-      type: "half",
-      label: "Half Slot",
-      soldFront: false,
-      soldBack: true,
-      bizFront: null,
-      bizBack: "Veteran Renovations",
-      adImageUrlFront: null,
-      adImageUrlBack: "https://rtecuplwxeijdkvfllcq.supabase.co/storage/v1/object/public/gallery/slot-1781990614869-Veteran_Renovations__1_.png"
-    }
-  ];
+  // Dynamic Postcard Preview Layout for the active campaign town:
+  const cardSlotsLayout = activeCampaign.slots;
 
   // Derive Sold vs Available counts for display
   const totalSlotsCount = 16;
