@@ -1,4 +1,5 @@
 export interface TownAverage {
+  slug: string;
   city: string;
   doors: number;
   income: string;
@@ -6,6 +7,7 @@ export interface TownAverage {
   age: number;
   residencyLength: number;
   homeowner: number;
+  mapImageUrl: string;
   pricing: {
     standard: number;
     double: number;
@@ -13,64 +15,71 @@ export interface TownAverage {
   };
 }
 
-const markhamWoodsData: TownAverage = {
-  city: "Markham Woods",
-  doors: 4000,
-  income: "$234,912",
-  householdSize: 3.2,
-  age: 54,
-  residencyLength: 14,
-  homeowner: 97,
-  pricing: {
-    standard: 495,
-    double: 895,
-    half: 295
-  }
+const DEFAULT_PRICING = {
+  standard: 495,
+  double: 895,
+  half: 295,
 };
 
 export const townAverages: Record<string, TownAverage> = {
-  "markhamwoods": markhamWoodsData,
-  "markham-woods": markhamWoodsData,
+  "markhamwoods": {
+    slug: "markhamwoods",
+    city: "Markham Woods",
+    doors: 4000,
+    income: "$234,912",
+    householdSize: 3.2,
+    age: 54,
+    residencyLength: 14,
+    homeowner: 97,
+    mapImageUrl: "/assets/markham_woods_map.png",
+    pricing: DEFAULT_PRICING,
+  },
   "longwood-lakemary": {
+    slug: "longwood-lakemary",
     city: "Longwood - Lake Mary",
     doors: 5000,
-    income: "$150,000.00",
-    householdSize: 3.3,
-    age: 50,
-    residencyLength: 12,
-    homeowner: 70,
-    pricing: {
-      standard: 495,
-      double: 895,
-      half: 295
-    }
+    income: "$125,726",
+    householdSize: 2.7,
+    age: 54,
+    residencyLength: 15,
+    homeowner: 92,
+    mapImageUrl: "/assets/longwood_lakemary_map.jpg",
+    pricing: DEFAULT_PRICING,
   },
   "sanford": {
+    slug: "sanford",
     city: "Sanford",
     doors: 5000,
-    income: "$85,000.00",
-    householdSize: 3.1,
-    age: 41,
-    residencyLength: 11,
-    homeowner: 50,
-    pricing: {
-      standard: 495,
-      double: 895,
-      half: 295
-    }
+    income: "$158,428",
+    householdSize: 2.6,
+    age: 53,
+    residencyLength: 12,
+    homeowner: 92,
+    mapImageUrl: "/assets/sanford_map.png",
+    pricing: DEFAULT_PRICING,
   },
   "altamonte-springs": {
+    slug: "altamonte-springs",
     city: "Altamonte Springs",
     doors: 5000,
-    income: "$130,000.00",
-    householdSize: 3.1,
-    age: 39,
-    residencyLength: 8,
-    homeowner: 60,
-    pricing: {
-      standard: 495,
-      double: 895,
-      half: 295
-    }
-  }
+    income: "$107,325",
+    householdSize: 2.8,
+    age: 54,
+    residencyLength: 15,
+    homeowner: 86,
+    mapImageUrl: "/assets/altamonte_springs_map.png",
+    pricing: DEFAULT_PRICING,
+  },
 };
+
+// Also support markham-woods alias
+townAverages["markham-woods"] = townAverages["markhamwoods"];
+
+/**
+ * Safely resolves town average statistics by slug alias.
+ */
+export function getTownAverage(slug?: string): TownAverage {
+  if (!slug) return townAverages["markhamwoods"];
+  const normalized = slug === "markham-woods" ? "markhamwoods" : slug;
+  return townAverages[normalized] || townAverages["markhamwoods"];
+}

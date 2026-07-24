@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { campaignRoutes, CampaignRoute, PostalRoute, PostcardSlot } from "../data/routes";
 import { faqs } from "../data/faq";
 import { testimonials } from "../data/testimonials";
-import { townAverages, TownAverage } from "../data/townAverages";
+import { townAverages, TownAverage, getTownAverage } from "../data/townAverages";
 
 // Elegant Reveal component to fade-in items when they enter the viewport
 function Reveal({
@@ -53,12 +53,11 @@ function Reveal({
 }
 
 export default function HomePage({ initialSlug }: { initialSlug?: string }) {
-  // Filter active header/hero campaigns (excludes coming-soon towns)
-  const headerCampaigns = campaignRoutes.filter((c) => c.slug !== "altamonte-springs");
+  const validSlugs = ["markhamwoods", "markham-woods", "longwood-lakemary", "sanford", "altamonte-springs"];
 
   // Active location campaign slug: default to initialSlug or markhamwoods
   const [activeSlug, setActiveSlug] = useState<string>(() => {
-    if (initialSlug && ["markhamwoods", "markham-woods", "longwood-lakemary", "sanford"].includes(initialSlug)) {
+    if (initialSlug && validSlugs.includes(initialSlug)) {
       return initialSlug === "markham-woods" ? "markhamwoods" : initialSlug;
     }
     return "markhamwoods";
@@ -67,14 +66,14 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
   useEffect(() => {
     if (typeof window !== "undefined" && !initialSlug) {
       const path = window.location.pathname.replace(/^\//, "");
-      if (["markhamwoods", "longwood-lakemary", "sanford"].includes(path)) {
-        setActiveSlug(path);
+      if (validSlugs.includes(path)) {
+        setActiveSlug(path === "markham-woods" ? "markhamwoods" : path);
       }
     }
   }, [initialSlug]);
 
-  const activeCampaign = campaignRoutes.find((c) => c.slug === activeSlug) || campaignRoutes[0];
-  const activeAverages = townAverages[activeSlug] || townAverages["markhamwoods"] || townAverages["markham-woods"];
+  const activeCampaign = campaignRoutes.find((c) => c.slug === activeSlug || (activeSlug === "markhamwoods" && c.slug === "markham-woods")) || campaignRoutes[0];
+  const activeAverages = getTownAverage(activeSlug);
 
   // Postcard side preview toggle: "front" vs "back"
   const [activeSide, setActiveSide] = useState<"front" | "back">("front");
@@ -438,10 +437,10 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
           <Reveal variant="bottom" delay={80}>
             <div className="location-selector-wrap">
               <div className="location-selector">
-                {headerCampaigns.map((c) => (
+                {campaignRoutes.map((c) => (
                   <button
                     key={c.slug}
-                    className={`location-btn ${activeSlug === c.slug ? "active" : ""}`}
+                    className={`location-btn ${activeSlug === (c.slug === "markham-woods" ? "markhamwoods" : c.slug) ? "active" : ""}`}
                     onClick={() => handleLocationChange(c.slug)}
                   >
                     {c.name}
@@ -595,7 +594,7 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
               {/* Map Wrapper displaying the clean map image */}
               <div className="map-wrapper">
                 <img
-                  src="/assets/markham_woods_map.png"
+                  src={activeAverages.mapImageUrl || "/assets/markham_woods_map.png"}
                   alt={`${activeCampaign.city} Coverage Map`}
                 />
               </div>
@@ -1278,7 +1277,7 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
             <div>
               <h5 className="footer-title">Active Territories</h5>
               <ul className="footer-links">
-                {headerCampaigns.map((c) => (
+                {campaignRoutes.map((c) => (
                   <li key={c.slug}>
                     <button
                       onClick={() => handleLocationChange(c.slug)}
@@ -1289,11 +1288,6 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
                     </button>
                   </li>
                 ))}
-                <li>
-                  <span style={{ color: "rgba(255,255,255,0.45)", fontSize: "0.9rem" }}>
-                    Altamonte Springs (Coming Soon)
-                  </span>
-                </li>
               </ul>
             </div>
 
