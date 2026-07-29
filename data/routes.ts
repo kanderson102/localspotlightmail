@@ -55,9 +55,9 @@ export const campaignRoutes: CampaignRoute[] = [
     tagline: "Connecting Markham Woods Businesses With Local Families",
     city: "Markham Woods",
     state: "FL",
-    size: 4000,
+    size: 5000,
     totalSlots: 16,
-    pricing: { standard: 695, double: 1250, half: 395 },
+    pricing: { standard: 595, double: 1095, half: 395 },
     slots: createTownSlots([
       {
         id: "s2",
