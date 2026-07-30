@@ -15,7 +15,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "The Local Spotlight | Premium Co-op Postcard Mailers",
+  title: "Local Spotlight Mail | Premium Co-op Postcard Mailers",
   description: "Get your business in front of targeted local doors for pennies per home. Exclusive category slots available.",
   icons: {
     icon: "/favicon.svg",

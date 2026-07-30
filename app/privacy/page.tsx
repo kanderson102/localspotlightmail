@@ -16,7 +16,7 @@ export default function PrivacyPage() {
 
         <div className="legal-body">
           <p>
-            The Local Spotlight (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) respects your privacy and is committed to protecting the personal information you provide to us through our website.
+            Local Spotlight Mail (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) respects your privacy and is committed to protecting the personal information you provide to us through our website.
           </p>
 
           <h2 className="legal-section-title">Information We Collect</h2>
@@ -68,7 +68,7 @@ export default function PrivacyPage() {
           </p>
 
           <div className="legal-contact-box">
-            <p><strong>The Local Spotlight</strong></p>
+            <p><strong>Local Spotlight Mail</strong></p>
             <p>Email: <a href="mailto:kyle@localspotlightmail.com">kyle@localspotlightmail.com</a></p>
             <p>Website: <a href="https://localspotlightmail.com">localspotlightmail.com</a></p>
             <p>Phone: 407-461-5219</p>
@@ -77,9 +77,10 @@ export default function PrivacyPage() {
       </div>
 
       <footer className="legal-footer">
-        <p>&copy; {new Date().getFullYear()} The Local Spotlight Mailer. All rights reserved. | <a href="/terms">Terms of Service</a></p>
+        <p>&copy; {new Date().getFullYear()} Local Spotlight Mail. All rights reserved. | <a href="/terms">Terms of Service</a></p>
       </footer>
     </div>
   );
 }
+
 

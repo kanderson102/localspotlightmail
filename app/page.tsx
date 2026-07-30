@@ -246,7 +246,7 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
               <circle cx="11" cy="11" r="7" />
               <line x1="21" y1="21" x2="16.65" y2="16.65" />
             </svg>
-            <span>The Local Spotlight</span>
+            <span>Local Spotlight Mail</span>
           </a>
 
           <nav className="nav-links">
@@ -971,13 +971,12 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
               <div className="about-content">
                 <h3>Meet the Organizer</h3>
                 <p>
-                  Hi, I'm Kyle, the publisher and coordinator behind <strong>The Local Spotlight</strong>. I'm a Longwood, FL native, went to Lake Mary High School, graduated from the University of Florida with a B.S. in Industrial & Systems Engineering, and now want to see my home community thrive.
+                  Hi, I'm Kyle, the publisher and coordinator behind <strong>Local Spotlight Mail</strong>. I'm a Longwood, FL native with more than 4 years of experience in digital design, 10 years in software development and consulting, and 5 years of community connection, I created Local Spotlight Mail to showcase exceptional local businesses and connect residents around my hometown with the very best in our community.
                 </p>
                 <p>
-                  My mission is to build strong local service connections by helping trusted businesses land directly on the kitchen counter of high-value homeowners. Direct mail is highly effective but printing and sorting postage solo can be cost-prohibitive for small businesses. By coordinating local services into an oversized, shared 9x12" layout, we cut those costs by over 80%.
-                </p>
+                  Outside of work, you'll usually find me enjoying nature or volunteering in farming projects around the world. Most recently, these include Eco Caminhos in Brazil, family operated avocado farms in Spain, and eco communities in Portugal. It's an experience that continually inspires me and reminds me to connect with the earth more.                </p>
                 <p>
-                  I handle all graphic design adjustments, route sorted postage, and coordinate carrier drops so you can focus entirely on taking calls and running your business. Secure your category lockout spot today before a competitor does!
+                  My goal here is simple: help great local businesses gain the recognition they deserve while making it easier for residents to discover the businesses we're proud to feature.
                 </p>
               </div>
             </Reveal>
@@ -1146,7 +1145,7 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
                   <circle cx="11" cy="11" r="7" />
                   <line x1="21" y1="21" x2="16.65" y2="16.65" />
                 </svg>
-                <span>The Local Spotlight</span>
+                <span>Local Spotlight Mail</span>
               </a>
               <p className="footer-desc">
                 Uniting local services and businesses to share direct mail postage and print costs, helping you reach targeted homeowners for pennies per door.

@@ -16,17 +16,17 @@ export default function TermsPage() {
 
         <div className="legal-body">
           <p>
-            Welcome to The Local Spotlight (&quot;The Local Spotlight,&quot; &quot;we,&quot; &quot;our,&quot; or &quot;us&quot;). By accessing or using our website, newsletter, advertising services, or other services we provide, you agree to these Terms of Service.
+            Welcome to Local Spotlight Mail (&quot;Local Spotlight Mail,&quot; &quot;we,&quot; &quot;our,&quot; or &quot;us&quot;). By accessing or using our website, newsletter, advertising services, or other services we provide, you agree to these Terms of Service.
           </p>
 
           <h2 className="legal-section-title">1. Use of Our Website</h2>
           <p>
-            Our website is intended to provide information about The Local Spotlight, local businesses, community events, advertising opportunities, and related services. You agree to use our website only for lawful purposes and not to engage in any activity that could interfere with its operation or security.
+            Our website is intended to provide information about Local Spotlight Mail, local businesses, community events, advertising opportunities, and related services. You agree to use our website only for lawful purposes and not to engage in any activity that could interfere with its operation or security.
           </p>
 
           <h2 className="legal-section-title">2. Advertising Services</h2>
           <p>
-            The Local Spotlight provides shared direct mail advertising opportunities through community postcards, digital promotions, and other marketing initiatives. Submission of an advertising inquiry does not guarantee placement. Advertising opportunities are subject to availability, category approval, and payment. We reserve the right to decline advertising that is misleading, unlawful, offensive, or inconsistent with our community standards.
+            Local Spotlight Mail provides shared direct mail advertising opportunities through community postcards, digital promotions, and other marketing initiatives. Submission of an advertising inquiry does not guarantee placement. Advertising opportunities are subject to availability, category approval, and payment. We reserve the right to decline advertising that is misleading, unlawful, offensive, or inconsistent with our community standards.
           </p>
 
           <h2 className="legal-section-title">3. Payments</h2>
@@ -36,27 +36,27 @@ export default function TermsPage() {
 
           <h2 className="legal-section-title">4. Advertiser Responsibilities</h2>
           <p>
-            Advertisers are responsible for providing accurate information, logos, high-resolution images, website links, QR code destinations, and other marketing materials by the requested deadlines. The Local Spotlight is not responsible for delays or print omissions caused by incomplete or late submissions from advertisers. Advertisers warrant they have the legal right to use any branding and content they provide.
+            Advertisers are responsible for providing accurate information, logos, high-resolution images, website links, QR code destinations, and other marketing materials by the requested deadlines. Local Spotlight Mail is not responsible for delays or print omissions caused by incomplete or late submissions from advertisers. Advertisers warrant they have the legal right to use any branding and content they provide.
           </p>
 
           <h2 className="legal-section-title">5. Intellectual Property</h2>
           <p>
-            All content on this website, including text, graphics, logos, branding, layouts, and original materials, is the property of The Local Spotlight unless otherwise noted. No content may be copied, reproduced, or distributed without prior written permission.
+            All content on this website, including text, graphics, logos, branding, layouts, and original materials, is the property of Local Spotlight Mail unless otherwise noted. No content may be copied, reproduced, or distributed without prior written permission.
           </p>
 
           <h2 className="legal-section-title">6. Third-Party Links</h2>
           <p>
-            Our website may contain links to third-party websites or businesses (including Stripe for checkout processing). The Local Spotlight is not responsible for the content, products, services, or privacy practices of those third-party websites.
+            Our website may contain links to third-party websites or businesses (including Stripe for checkout processing). Local Spotlight Mail is not responsible for the content, products, services, or privacy practices of those third-party websites.
           </p>
 
           <h2 className="legal-section-title">7. Disclaimer</h2>
           <p>
-            While we strive to provide accurate and up-to-date information, The Local Spotlight makes no warranties regarding the completeness, accuracy, or reliability of information provided on this website. All services are provided &quot;as is&quot; without warranties of any kind.
+            While we strive to provide accurate and up-to-date information, Local Spotlight Mail makes no warranties regarding the completeness, accuracy, or reliability of information provided on this website. All services are provided &quot;as is&quot; without warranties of any kind.
           </p>
 
           <h2 className="legal-section-title">8. Limitation of Liability</h2>
           <p>
-            To the fullest extent permitted by law, The Local Spotlight shall not be liable for any indirect, incidental, special, or consequential damages arising from the use of our website, postal distribution, or advertising services.
+            To the fullest extent permitted by law, Local Spotlight Mail shall not be liable for any indirect, incidental, special, or consequential damages arising from the use of our website, postal distribution, or advertising services.
           </p>
 
           <h2 className="legal-section-title">9. Changes to These Terms</h2>
@@ -70,7 +70,7 @@ export default function TermsPage() {
           </p>
 
           <div className="legal-contact-box">
-            <p><strong>The Local Spotlight</strong></p>
+            <p><strong>Local Spotlight Mail</strong></p>
             <p>Email: <a href="mailto:kyle@localspotlightmail.com">kyle@localspotlightmail.com</a></p>
             <p>Website: <a href="https://localspotlightmail.com">localspotlightmail.com</a></p>
             <p>Phone: 407-461-5219</p>
@@ -79,9 +79,10 @@ export default function TermsPage() {
       </div>
 
       <footer className="legal-footer">
-        <p>&copy; {new Date().getFullYear()} The Local Spotlight Mailer. All rights reserved. | <a href="/privacy">Privacy Policy</a></p>
+        <p>&copy; {new Date().getFullYear()} Local Spotlight Mail. All rights reserved. | <a href="/privacy">Privacy Policy</a></p>
       </footer>
     </div>
   );
 }
+
 
