@@ -59,30 +59,30 @@ export const campaignRoutes: CampaignRoute[] = [
     totalSlots: 16,
     pricing: { standard: 595, double: 1095, half: 395 },
     slots: createTownSlots([
-      {
-        id: "s2",
-        soldFront: true,
-        bizFront: "McCoy Roofing",
-        adImageUrlFront: "https://rtecuplwxeijdkvfllcq.supabase.co/storage/v1/object/public/gallery/slot-1779458111640-McCoy_9X12.png"
-      },
-      {
-        id: "s5",
-        soldFront: true,
-        bizFront: "Laser Core Engraving",
-        adImageUrlFront: "https://rtecuplwxeijdkvfllcq.supabase.co/storage/v1/object/public/gallery/slot-1778894654970-Winner.png"
-      },
-      {
-        id: "s6",
-        soldBack: true,
-        bizBack: "Revitalift Medspa",
-        adImageUrlBack: "https://rtecuplwxeijdkvfllcq.supabase.co/storage/v1/object/public/gallery/slot-1780607874063-Cami_Moran_9X12__2_.png"
-      },
-      {
-        id: "s8",
-        soldBack: true,
-        bizBack: "Veteran Renovations",
-        adImageUrlBack: "https://rtecuplwxeijdkvfllcq.supabase.co/storage/v1/object/public/gallery/slot-1781990614869-Veteran_Renovations__1_.png"
-      }
+      // {
+      //   id: "s2",
+      //   soldFront: true,
+      //   bizFront: "McCoy Roofing",
+      //   adImageUrlFront: "https://rtecuplwxeijdkvfllcq.supabase.co/storage/v1/object/public/gallery/slot-1779458111640-McCoy_9X12.png"
+      // },
+      // {
+      //   id: "s5",
+      //   soldFront: true,
+      //   bizFront: "Laser Core Engraving",
+      //   adImageUrlFront: "https://rtecuplwxeijdkvfllcq.supabase.co/storage/v1/object/public/gallery/slot-1778894654970-Winner.png"
+      // },
+      // {
+      //   id: "s6",
+      //   soldBack: true,
+      //   bizBack: "Revitalift Medspa",
+      //   adImageUrlBack: "https://rtecuplwxeijdkvfllcq.supabase.co/storage/v1/object/public/gallery/slot-1780607874063-Cami_Moran_9X12__2_.png"
+      // },
+      // {
+      //   id: "s8",
+      //   soldBack: true,
+      //   bizBack: "Veteran Renovations",
+      //   adImageUrlBack: "https://rtecuplwxeijdkvfllcq.supabase.co/storage/v1/object/public/gallery/slot-1781990614869-Veteran_Renovations__1_.png"
+      // }
     ])
   },
   {
@@ -95,10 +95,10 @@ export const campaignRoutes: CampaignRoute[] = [
     totalSlots: 16,
     pricing: { standard: 495, double: 895, half: 295 },
     slots: createTownSlots([
-      { id: "s1", soldFront: true, bizFront: "Lake Mary Dentistry" },
-      { id: "s5", soldFront: true, bizFront: "Suburban Auto Repair" },
-      { id: "s6", soldBack: true, bizBack: "Happy Tails Veterinary" },
-      { id: "s8", soldBack: true, bizBack: "Apex Plumbing" }
+      // { id: "s1", soldFront: true, bizFront: "Lake Mary Dentistry" },
+      // { id: "s5", soldFront: true, bizFront: "Suburban Auto Repair" },
+      // { id: "s6", soldBack: true, bizBack: "Happy Tails Veterinary" },
+      // { id: "s8", soldBack: true, bizBack: "Apex Plumbing" }
     ])
   },
   {
@@ -111,10 +111,10 @@ export const campaignRoutes: CampaignRoute[] = [
     totalSlots: 16,
     pricing: { standard: 495, double: 895, half: 295 },
     slots: createTownSlots([
-      { id: "s1", soldFront: true, bizFront: "Sanford Brewing Company" },
-      { id: "s5", soldFront: true, bizFront: "Hollerbachs German Cafe" },
-      { id: "s6", soldBack: true, bizBack: "Celery City Craft" },
-      { id: "s8", soldBack: true, bizBack: "Gateway Plumbing" }
+      // { id: "s1", soldFront: true, bizFront: "Sanford Brewing Company" },
+      // { id: "s5", soldFront: true, bizFront: "Hollerbachs German Cafe" },
+      // { id: "s6", soldBack: true, bizBack: "Celery City Craft" },
+      // { id: "s8", soldBack: true, bizBack: "Gateway Plumbing" }
     ])
   },
   {
@@ -127,10 +127,10 @@ export const campaignRoutes: CampaignRoute[] = [
     totalSlots: 16,
     pricing: { standard: 495, double: 895, half: 295 },
     slots: createTownSlots([
-      { id: "s1", soldFront: true, bizFront: "Altamonte Eye Care" },
-      { id: "s5", soldFront: true, bizFront: "Roost Pub & Grill" },
-      { id: "s6", soldBack: true, bizBack: "Spring Valley Plumbers" },
-      { id: "s8", soldBack: true, bizBack: "Altamonte Roof Pros" }
+      // { id: "s1", soldFront: true, bizFront: "Altamonte Eye Care" },
+      // { id: "s5", soldFront: true, bizFront: "Roost Pub & Grill" },
+      // { id: "s6", soldBack: true, bizBack: "Spring Valley Plumbers" },
+      // { id: "s8", soldBack: true, bizBack: "Altamonte Roof Pros" }
     ])
   }
 ];

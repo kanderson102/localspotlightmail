@@ -971,13 +971,10 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
               <div className="about-content">
                 <h3>Meet the Organizer</h3>
                 <p>
-                  Hi, I'm Kyle, the publisher and coordinator behind <strong>The Local Spotlight</strong>. My mission is to build strong local service connections by helping trusted businesses land directly on the kitchen counter of high-value homeowners.
+                  Hi, I'm Kyle, the publisher and coordinator behind <strong>The Local Spotlight</strong>. I'm a Longwood, FL native, went to Lake Mary High School, graduated from the University of Florida with a B.S. in Industrial & Systems Engineering, and now want to see my home community thrive.
                 </p>
                 <p>
-                  I'm a Longwood, FL native, went to Lake Mary High School, graduated from the University of Florida with a B.S. in Industrial & Systems Engineering, and now want to see my home community thrive. My career background is in software, but people are my passion.
-                </p>
-                <p>
-                  Direct mail is highly effective but printing and sorting postage solo can be cost-prohibitive for small businesses. By coordinating local services into an oversized, shared 9x12" layout, we cut those costs by over 80%.
+                  My mission is to build strong local service connections by helping trusted businesses land directly on the kitchen counter of high-value homeowners. Direct mail is highly effective but printing and sorting postage solo can be cost-prohibitive for small businesses. By coordinating local services into an oversized, shared 9x12" layout, we cut those costs by over 80%.
                 </p>
                 <p>
                   I handle all graphic design adjustments, route sorted postage, and coordinate carrier drops so you can focus entirely on taking calls and running your business. Secure your category lockout spot today before a competitor does!
