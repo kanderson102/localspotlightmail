@@ -195,17 +195,21 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   justify-content: flex-start;
   margin-bottom: 24px;
+  width: 100%;
 }
 
 .location-selector {
-  display: flex;
-  flex-wrap: wrap; /* Wraps cleanly on mobile devices */
-  background-color: rgba(255, 255, 255, 0.1);
-  padding: 4px;
-  border-radius: 12px;
-  border: 1.5px solid rgba(255, 255, 255, 0.15);
-  gap: 4px;
-  max-width: 100%;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.12);
+  padding: 6px;
+  border-radius: 16px;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  gap: 6px;
+  width: fit-content;
+  max-width: fit-content;
+  backdrop-filter: blur(8px);
 }
 
 .location-btn {
@@ -697,6 +701,10 @@ h1, h2, h3, h4, h5, h6 {
   perspective: 1500px;
   width: 100%;
   aspect-ratio: 12 / 9;
+}
+
+.postcard-flip-container.card-type-6x11 {
+  aspect-ratio: 11 / 6;
 }
 
 .postcard-flip-card {

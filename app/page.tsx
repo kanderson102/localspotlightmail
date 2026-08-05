@@ -53,12 +53,14 @@ function Reveal({
 }
 
 export default function HomePage({ initialSlug }: { initialSlug?: string }) {
-  const validSlugs = ["markhamwoods", "markham-woods", "longwood-lakemary", "sanford", "altamonte-springs"];
+  const validSlugs = ["markhamwoods", "markham-woods", "wekivasprings", "wekiva-springs", "longwood-lakemary", "sanford", "altamonte-springs"];
 
   // Active location campaign slug: default to initialSlug or markhamwoods
   const [activeSlug, setActiveSlug] = useState<string>(() => {
     if (initialSlug && validSlugs.includes(initialSlug)) {
-      return initialSlug === "markham-woods" ? "markhamwoods" : initialSlug;
+      if (initialSlug === "markham-woods") return "markhamwoods";
+      if (initialSlug === "wekiva-springs") return "wekivasprings";
+      return initialSlug;
     }
     return "markhamwoods";
   });
@@ -67,12 +69,14 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
     if (typeof window !== "undefined" && !initialSlug) {
       const path = window.location.pathname.replace(/^\//, "");
       if (validSlugs.includes(path)) {
-        setActiveSlug(path === "markham-woods" ? "markhamwoods" : path);
+        if (path === "markham-woods") setActiveSlug("markhamwoods");
+        else if (path === "wekiva-springs") setActiveSlug("wekivasprings");
+        else setActiveSlug(path);
       }
     }
   }, [initialSlug]);
 
-  const activeCampaign = campaignRoutes.find((c) => c.slug === activeSlug || (activeSlug === "markhamwoods" && c.slug === "markham-woods")) || campaignRoutes[0];
+  const activeCampaign = campaignRoutes.find((c) => c.slug === activeSlug || (activeSlug === "markhamwoods" && c.slug === "markham-woods") || (activeSlug === "wekivasprings" && c.slug === "wekiva-springs")) || campaignRoutes[0];
   const activeAverages = getTownAverage(activeSlug);
 
   // Postcard side preview toggle: "front" vs "back"
@@ -112,7 +116,9 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
 
   // Update active route when campaign changes
   const handleLocationChange = (slug: string) => {
-    const targetSlug = slug === "markham-woods" ? "markhamwoods" : slug;
+    let targetSlug = slug;
+    if (slug === "markham-woods") targetSlug = "markhamwoods";
+    if (slug === "wekiva-springs") targetSlug = "wekivasprings";
     setActiveSlug(targetSlug);
     setActiveSide("front");
     if (typeof window !== "undefined") {
@@ -187,6 +193,8 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
     switch (activeSlug) {
       case "markhamwoods":
       case "markham-woods": return "e.g. Heathrow Plumber";
+      case "wekivasprings":
+      case "wekiva-springs": return "e.g. Sweetwater Med Spa";
       case "longwood-lakemary": return "e.g. Lake Mary Dental";
       case "sanford": return "e.g. Historic Sanford Cafe";
       case "altamonte-springs": return "e.g. Altamonte CPA";
@@ -337,7 +345,7 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
 
           <Reveal variant="bottom" delay={240}>
             <p className="hero-subtitle">
-              {activeCampaign.tagline}. Land directly on the kitchen counter of {activeAverages.doors.toLocaleString()} high-value local households on our premium 9x12" shared co-op mailer.
+              {activeCampaign.tagline}. Land directly on the kitchen counter of {activeAverages.doors.toLocaleString()} high-value local households on our premium {activeAverages.cardType || "9x12"}" shared co-op mailer.
             </p>
           </Reveal>
 
@@ -357,14 +365,14 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
               <div className="explainer-text">
                 <h3>A Community-Focused Shared Advertising Campaign</h3>
                 <p>
-                  We design and mail a premium, double-sided 9x12" full-color postcard to {activeAverages.doors.toLocaleString()} households in targeted {activeCampaign.city} neighborhoods.
+                  We design and mail a premium, double-sided {activeAverages.cardType || "9x12"}" full-color postcard to {activeAverages.doors.toLocaleString()} households in targeted {activeCampaign.city} neighborhoods.
                 </p>
                 <p>
                   By splitting the mailer space among a limited lineup of non-competing local businesses, we cut print and postage costs by up to 80% compared to solo direct mail campaigns.
                 </p>
                 <ul className="explainer-bullets">
                   <li>USPS Every Door Direct Mail (EDDM) delivery</li>
-                  <li>Exclusive category lockout (only one realtor, one roofer, etc.)</li>
+                  <li>Exclusive category lockout ({activeSlug === "sanford" || activeAverages.cardType === "6x11" ? "only one dentist, one auto shop, etc." : "only one realtor, one roofer, etc."})</li>
                   <li>Free professional ad graphic design & copywriting consulting</li>
                   <li>Integrated QR tracking link to measure scan engagement</li>
                 </ul>
@@ -433,7 +441,7 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
         <div className="container">
           <div className="coverage-stats-wrap">
             <Reveal variant="bottom" delay={0} className="coverage-stat-col">
-              <div className="coverage-stat-num">9x12"</div>
+              <div className="coverage-stat-num">{activeAverages.cardType || "9x12"}"</div>
               <div className="coverage-stat-lbl">Card Size</div>
             </Reveal>
 
@@ -548,7 +556,7 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
             <Reveal variant="bottom" className="postcard-intro">
               <h3>Postcard Placements</h3>
               <p>
-                Oversized 9" x 12" co-op mailer layout. Check the claimed industry categories in your local area and select any available spot to submit a reservation inquiry.
+                {activeAverages.cardType || "9x12"}" co-op mailer layout. Check the claimed industry categories in your local area and select any available spot to submit a reservation inquiry.
               </p>
 
               <div className="postcard-status-row" style={{ margin: "20px 0" }}>
@@ -571,7 +579,7 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
 
             <Reveal variant="bottom" delay={150} className="postcard-container-wrap">
               {/* Sideways Card Flip animation card */}
-              <div className="postcard-flip-container">
+              <div className={`postcard-flip-container ${activeAverages.cardType === "6x11" ? "card-type-6x11" : ""}`}>
                 <div className={`postcard-flip-card ${activeSide === "back" ? "flipped" : ""}`}>
 
                   {/* FRONT SIDE PANEL */}
@@ -579,7 +587,7 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
                     <div className="postcard-grid-side">
                       {/* Divider bar */}
                       <div className="postcard-divider-bar">
-                        The {activeCampaign.city} Spotlight
+                        {activeAverages.cardType === "6x11" ? `COMMUNITY SPOTLIGHT — ${activeCampaign.city.toUpperCase()}` : `The ${activeCampaign.city} Spotlight`}
                       </div>
 
                       {/* Recipient box on the right of the divider bar */}
@@ -632,28 +640,109 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
                               left: `${slot.x}%`,
                               top: `${slot.y}%`,
                               width: `${slot.w}%`,
-                              height: `${slot.h}%`
+                              height: `${slot.h}%`,
+                              display: "flex",
+                              flexDirection: "column",
+                              alignItems: "center",
+                              justifyContent: "flex-start",
+                              padding: activeAverages.cardType === "6x11"
+                                ? "6px 4px"
+                                : (slot.type === "half" ? "3px 4px" : "8px 6px")
                             }}
                           >
-                            <div style={{ fontSize: "0.8rem", color: "var(--primary-light)", fontWeight: "500", marginBottom: "4px" }}>
+                            <div style={{
+                              fontSize: activeAverages.cardType === "6x11"
+                                ? "0.95rem"
+                                : (slot.type === "half" ? "0.8rem" : "1.05rem"),
+                              fontWeight: "800",
+                              color: "var(--primary-dark)",
+                              lineHeight: "1.1",
+                              marginBottom: "1px"
+                            }}>
                               {slot.type === "standard" ? "Standard Slot" : slot.type === "double" ? "Double Slot" : "Half Slot"}
                             </div>
-                            <div style={{ fontSize: "1.35rem", fontWeight: "800", color: "var(--accent)", margin: "4px 0" }}>
-                              ${activeAverages.pricing[slot.type as "standard" | "double" | "half"]}
+                            <div style={{
+                              fontSize: activeAverages.cardType === "6x11"
+                                ? "0.75rem"
+                                : (slot.type === "half" ? "0.68rem" : "0.8rem"),
+                              fontWeight: "700",
+                              color: "var(--primary-light)",
+                              marginBottom: "1px"
+                            }}>
+                              {activeAverages.cardType === "6x11"
+                                ? (slot.type === "double" ? '5.0" x 2.5"' : '2.5" x 2.5"')
+                                : (slot.type === "double" ? '4" x 6"' : slot.type === "half" ? '2" x 3"' : '4" x 3"')}
                             </div>
                             <div style={{
-                              display: "inline-block",
-                              padding: "4px 10px",
-                              backgroundColor: "rgba(130, 183, 144, 0.12)",
+                              fontSize: activeAverages.cardType === "6x11"
+                                ? "1.3rem"
+                                : (slot.type === "half" ? "1.05rem" : "1.3rem"),
+                              fontWeight: "900",
                               color: "var(--accent)",
-                              borderRadius: "9999px",
-                              fontSize: "0.7rem",
-                              fontWeight: "700",
-                              textTransform: "uppercase",
-                              letterSpacing: "0.5px"
+                              margin: "1px 0"
                             }}>
-                              Available
+                              ${activeAverages.pricing[slot.type as "standard" | "double" | "half"]}
                             </div>
+                            {activeAverages.cardType === "6x11" ? (
+                              <div style={{
+                                width: "92%",
+                                height: "36%",
+                                minHeight: "36px",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                border: "2px dashed var(--accent)",
+                                borderRadius: "8px",
+                                padding: "4px 2px",
+                                fontSize: "0.75rem",
+                                fontWeight: "800",
+                                color: "var(--accent)",
+                                marginTop: "auto",
+                                marginBottom: "4px",
+                                textAlign: "center",
+                                backgroundColor: "rgba(130, 183, 144, 0.1)",
+                                textTransform: "uppercase",
+                                letterSpacing: "0.5px"
+                              }}>
+                                YOUR OFFER / DEAL
+                              </div>
+                            ) : (
+                              <>
+                                {slot.type !== "half" && (
+                                  <div style={{
+                                    width: "88%",
+                                    border: "1.5px dashed rgba(45, 74, 54, 0.25)",
+                                    borderRadius: "8px",
+                                    padding: "8px 4px",
+                                    fontSize: "0.75rem",
+                                    fontWeight: "800",
+                                    color: "rgba(45, 74, 54, 0.5)",
+                                    margin: "auto 0",
+                                    textAlign: "center",
+                                    backgroundColor: "rgba(45, 74, 54, 0.03)",
+                                    textTransform: "uppercase",
+                                    letterSpacing: "0.5px"
+                                  }}>
+                                    YOUR AD HERE
+                                  </div>
+                                )}
+                                <div style={{
+                                  display: "inline-block",
+                                  padding: slot.type === "half" ? "2px 8px" : "3px 10px",
+                                  backgroundColor: "rgba(130, 183, 144, 0.15)",
+                                  color: "var(--accent)",
+                                  borderRadius: "9999px",
+                                  fontSize: slot.type === "half" ? "0.6rem" : "0.68rem",
+                                  fontWeight: "700",
+                                  textTransform: "uppercase",
+                                  letterSpacing: "0.5px",
+                                  marginTop: slot.type === "half" ? "auto" : "0",
+                                  marginBottom: slot.type === "half" ? "2px" : "4px"
+                                }}>
+                                  Available
+                                </div>
+                              </>
+                            )}
                           </div>
                         );
                       })}
@@ -665,7 +754,7 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
                     <div className="postcard-grid-side">
                       {/* Divider bar showing Support Local Businesses */}
                       <div className="postcard-divider-bar">
-                        Support Local Businesses
+                        {activeAverages.cardType === "6x11" ? `COMMUNITY SPOTLIGHT — ${activeCampaign.city.toUpperCase()}` : `Support Local Businesses`}
                       </div>
 
                       {/* Recipient box on the right of the divider bar on back side */}
@@ -718,28 +807,109 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
                               left: `${slot.x}%`,
                               top: `${slot.y}%`,
                               width: `${slot.w}%`,
-                              height: `${slot.h}%`
+                              height: `${slot.h}%`,
+                              display: "flex",
+                              flexDirection: "column",
+                              alignItems: "center",
+                              justifyContent: "flex-start",
+                              padding: activeAverages.cardType === "6x11"
+                                ? "6px 4px"
+                                : (slot.type === "half" ? "3px 4px" : "8px 6px")
                             }}
                           >
-                            <div style={{ fontSize: "0.8rem", color: "var(--primary-light)", fontWeight: "500", marginBottom: "4px" }}>
+                            <div style={{
+                              fontSize: activeAverages.cardType === "6x11"
+                                ? "0.95rem"
+                                : (slot.type === "half" ? "0.8rem" : "1.05rem"),
+                              fontWeight: "800",
+                              color: "var(--primary-dark)",
+                              lineHeight: "1.1",
+                              marginBottom: "1px"
+                            }}>
                               {slot.type === "standard" ? "Standard Slot" : slot.type === "double" ? "Double Slot" : "Half Slot"}
                             </div>
-                            <div style={{ fontSize: "1.35rem", fontWeight: "800", color: "var(--accent)", margin: "4px 0" }}>
-                              ${activeAverages.pricing[slot.type as "standard" | "double" | "half"]}
+                            <div style={{
+                              fontSize: activeAverages.cardType === "6x11"
+                                ? "0.75rem"
+                                : (slot.type === "half" ? "0.68rem" : "0.8rem"),
+                              fontWeight: "700",
+                              color: "var(--primary-light)",
+                              marginBottom: "1px"
+                            }}>
+                              {activeAverages.cardType === "6x11"
+                                ? (slot.type === "double" ? '5.0" x 2.5"' : '2.5" x 2.5"')
+                                : (slot.type === "double" ? '4" x 6"' : slot.type === "half" ? '2" x 3"' : '4" x 3"')}
                             </div>
                             <div style={{
-                              display: "inline-block",
-                              padding: "4px 10px",
-                              backgroundColor: "rgba(130, 183, 144, 0.12)",
+                              fontSize: activeAverages.cardType === "6x11"
+                                ? "1.3rem"
+                                : (slot.type === "half" ? "1.05rem" : "1.3rem"),
+                              fontWeight: "900",
                               color: "var(--accent)",
-                              borderRadius: "9999px",
-                              fontSize: "0.7rem",
-                              fontWeight: "700",
-                              textTransform: "uppercase",
-                              letterSpacing: "0.5px"
+                              margin: "1px 0"
                             }}>
-                              Available
+                              ${activeAverages.pricing[slot.type as "standard" | "double" | "half"]}
                             </div>
+                            {activeAverages.cardType === "6x11" ? (
+                              <div style={{
+                                width: "92%",
+                                height: "36%",
+                                minHeight: "36px",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                border: "2px dashed var(--accent)",
+                                borderRadius: "8px",
+                                padding: "4px 2px",
+                                fontSize: "0.75rem",
+                                fontWeight: "800",
+                                color: "var(--accent)",
+                                marginTop: "auto",
+                                marginBottom: "4px",
+                                textAlign: "center",
+                                backgroundColor: "rgba(130, 183, 144, 0.1)",
+                                textTransform: "uppercase",
+                                letterSpacing: "0.5px"
+                              }}>
+                                YOUR OFFER / DEAL
+                              </div>
+                            ) : (
+                              <>
+                                {slot.type !== "half" && (
+                                  <div style={{
+                                    width: "88%",
+                                    border: "1.5px dashed rgba(45, 74, 54, 0.25)",
+                                    borderRadius: "8px",
+                                    padding: "8px 4px",
+                                    fontSize: "0.75rem",
+                                    fontWeight: "800",
+                                    color: "rgba(45, 74, 54, 0.5)",
+                                    margin: "auto 0",
+                                    textAlign: "center",
+                                    backgroundColor: "rgba(45, 74, 54, 0.03)",
+                                    textTransform: "uppercase",
+                                    letterSpacing: "0.5px"
+                                  }}>
+                                    YOUR AD HERE
+                                  </div>
+                                )}
+                                <div style={{
+                                  display: "inline-block",
+                                  padding: slot.type === "half" ? "2px 8px" : "3px 10px",
+                                  backgroundColor: "rgba(130, 183, 144, 0.15)",
+                                  color: "var(--accent)",
+                                  borderRadius: "9999px",
+                                  fontSize: slot.type === "half" ? "0.6rem" : "0.68rem",
+                                  fontWeight: "700",
+                                  textTransform: "uppercase",
+                                  letterSpacing: "0.5px",
+                                  marginTop: slot.type === "half" ? "auto" : "0",
+                                  marginBottom: slot.type === "half" ? "2px" : "4px"
+                                }}>
+                                  Available
+                                </div>
+                              </>
+                            )}
                           </div>
                         );
                       })}
@@ -824,7 +994,7 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
             <Reveal variant="bottom" delay={0} className="pricing-card popular">
               <div className="pricing-badge">Most Popular</div>
               <h4>Standard Ad Spot</h4>
-              <div className="dimensions">Ad Size: 3" x 4"</div>
+              <div className="dimensions">Ad Size: {activeAverages.cardType === "6x11" ? '2.5" x 2.5"' : '4" x 3"'}</div>
 
               {renderPriceDisplay(activeAverages.pricing.standard)}
 
@@ -842,7 +1012,7 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
             {/* Double Slot Card */}
             <Reveal variant="bottom" delay={100} className="pricing-card">
               <h4>Double Ad Spot</h4>
-              <div className="dimensions">Ad Size: 6" x 4"</div>
+              <div className="dimensions">Ad Size: {activeAverages.cardType === "6x11" ? '5" x 2.5"' : '4" x 6"'}</div>
 
               {renderPriceDisplay(activeAverages.pricing.double)}
 
@@ -858,22 +1028,24 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
             </Reveal>
 
             {/* Half Slot Card */}
-            <Reveal variant="bottom" delay={200} className="pricing-card">
-              <h4>Half Ad Spot</h4>
-              <div className="dimensions">Ad Size: 3" x 2"</div>
+            {activeAverages.pricing.half > 0 && (
+              <Reveal variant="bottom" delay={200} className="pricing-card">
+                <h4>Half Ad Spot</h4>
+                <div className="dimensions">Ad Size: 2" x 3"</div>
 
-              {renderPriceDisplay(activeAverages.pricing.half)}
+                {renderPriceDisplay(activeAverages.pricing.half)}
 
-              <ul className="pricing-features">
-                <li>Budget-friendly community visibility</li>
-                <li>Professional ad design layout included</li>
-                <li>Exclusive industry placement</li>
-                <li>Integrated QR tracking link</li>
-                <li>Direct USPS mailing to {activeAverages.doors.toLocaleString()} households</li>
-              </ul>
+                <ul className="pricing-features">
+                  <li>Budget-friendly community visibility</li>
+                  <li>Professional ad design layout included</li>
+                  <li>Exclusive industry placement</li>
+                  <li>Integrated QR tracking link</li>
+                  <li>Direct USPS mailing to {activeAverages.doors.toLocaleString()} households</li>
+                </ul>
 
-              <a href="#contact" className="btn btn-primary">Book Half Slot</a>
-            </Reveal>
+                <a href="#contact" className="btn btn-primary">Book Half Slot</a>
+              </Reveal>
+            )}
           </div>
         </div>
       </section>
@@ -996,8 +1168,34 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
 
           <div className="faq-accordion">
             {faqs.map((faq, idx) => {
-              // Dynamically replace 5,000 in answer with active door count
-              const dynamicAnswer = faq.a.replace("5,000", activeAverages.doors.toLocaleString());
+              let dynamicAnswer = faq.a.replace("5,000", activeAverages.doors.toLocaleString());
+              dynamicAnswer = dynamicAnswer.replace("9x12\"", `${activeAverages.cardType || "9x12"}"`);
+
+              // Dynamic ad design dimensions
+              if (faq.q.includes("design my own ad")) {
+                if (activeAverages.cardType === "6x11") {
+                  dynamicAnswer = "The 6x11 Community Mailer is designed for maximum response with clean branding and a high-converting deal offer (ad size 2.5\" x 2.5\" for standard slots or 5.0\" x 2.5\" for double slots). We provide free professional layout design for your deal offer, or you can submit your own print-ready graphic.";
+                } else {
+                  dynamicAnswer = "Absolutely! You can submit your own print-ready ad graphic (3.8\" x 2.8\" for standard slots, 3.8\" x 5.6\" for double slots, or 1.9\" x 2.8\" for half slots) or take advantage of our free professional graphic design service.";
+                }
+              }
+
+              // Dynamic business types
+              if (faq.q.includes("What kind of businesses advertise")) {
+                if (activeSlug === "sanford") {
+                  dynamicAnswer = "Any local business serving Sanford residents and families! This includes restaurants, craft breweries, salons, general & cosmetic dentists, auto repair & detailing shops, medical spas, fitness studios, and pet care.";
+                } else {
+                  dynamicAnswer = "Any business that serves local homeowners and families! This includes home service providers (roofing, landscaping, pest control, pool screen repair, HVAC) as well as premium consumer services (med spas, dentists, real estate agents, auto detailing).";
+                }
+              }
+
+              // Dynamic category exclusivity example
+              if (faq.q.includes("category exclusivity work")) {
+                if (activeSlug === "sanford") {
+                  dynamicAnswer = "To protect our advertisers and ensure maximum response rates, we enforce strict category exclusivity. Only one business per category (e.g., one dentist, one auto repair shop, one med spa) is allowed on each card. Secure your spot before your competitors do!";
+                }
+              }
+
               return (
                 <Reveal variant="bottom" delay={idx * 50} className={`faq-item ${activeFaqIndex === idx ? "active" : ""}`} key={idx}>
                   <button className="faq-trigger" onClick={() => handleFaqToggle(idx)}>
@@ -1027,7 +1225,7 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
               <div className="contact-text">
                 <h3>Reach Out To Us</h3>
                 <p>
-                  To maintain exclusive placements, we only allow <strong>one business per category</strong> (e.g. one HVAC specialist, one dentist, one realtor) on each card.
+                  To maintain exclusive placements, we only allow <strong>one business per category</strong> ({activeSlug === "sanford" ? "e.g. one auto shop, one dentist, one med spa" : "e.g. one HVAC specialist, one dentist, one realtor"}) on each card.
                 </p>
                 <p>
                   Fill out the form to inquire about slot availability in your territory, request custom ad designs, or ask questions about our mailing schedule.
@@ -1047,7 +1245,7 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ marginRight: "16px", color: "var(--accent)" }}>
                       <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
                     </svg>
-                    <div><strong>WhatsApp:</strong> 407-461-5219</div>
+                    <div><strong>Call/Text:</strong> 407-461-5219</div>
                   </li>
                 </ul>
               </div>
