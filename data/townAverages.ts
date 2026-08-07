@@ -29,9 +29,9 @@ export const townAverages: Record<string, TownAverage> = {
     mapImageUrl: "/assets/altamonte_springs_map.png",
     cardType: "9x12",
     pricing: {
-      standard: 439,
-      double: 789,
-      half: 269,
+      standard: 479,
+      double: 859,
+      half: 289,
     },
   },
   "longwood-lakemary": {
@@ -46,9 +46,9 @@ export const townAverages: Record<string, TownAverage> = {
     mapImageUrl: "/assets/longwood_lakemary_map.png",
     cardType: "9x12",
     pricing: {
-      standard: 419,
-      double: 749,
-      half: 249,
+      standard: 469,
+      double: 839,
+      half: 279,
     },
   },
   "markhamwoods": {
@@ -98,7 +98,7 @@ export const townAverages: Record<string, TownAverage> = {
     cardType: "9x12",
     pricing: {
       standard: 489,
-      double: 799,
+      double: 879,
       half: 289,
     },
   },
