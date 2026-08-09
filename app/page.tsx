@@ -53,30 +53,26 @@ function Reveal({
 }
 
 export default function HomePage({ initialSlug }: { initialSlug?: string }) {
-  const validSlugs = ["markhamwoods", "markham-woods", "wekivasprings", "wekiva-springs", "longwood-lakemary", "sanford", "altamonte-springs"];
+  const validSlugs = ["altamonte-springs", "lake-mary", "markham-woods", "sanford", "wekiva-springs"];
 
-  // Active location campaign slug: default to initialSlug or markhamwoods
+  // Active location campaign slug: default to initialSlug or altamonte-springs
   const [activeSlug, setActiveSlug] = useState<string>(() => {
     if (initialSlug && validSlugs.includes(initialSlug)) {
-      if (initialSlug === "markham-woods") return "markhamwoods";
-      if (initialSlug === "wekiva-springs") return "wekivasprings";
       return initialSlug;
     }
-    return "markhamwoods";
+    return "altamonte-springs";
   });
 
   useEffect(() => {
     if (typeof window !== "undefined" && !initialSlug) {
       const path = window.location.pathname.replace(/^\//, "");
       if (validSlugs.includes(path)) {
-        if (path === "markham-woods") setActiveSlug("markhamwoods");
-        else if (path === "wekiva-springs") setActiveSlug("wekivasprings");
-        else setActiveSlug(path);
+        setActiveSlug(path);
       }
     }
   }, [initialSlug]);
 
-  const activeCampaign = campaignRoutes.find((c) => c.slug === activeSlug || (activeSlug === "markhamwoods" && c.slug === "markham-woods") || (activeSlug === "wekivasprings" && c.slug === "wekiva-springs")) || campaignRoutes[0];
+  const activeCampaign = campaignRoutes.find((c) => c.slug === activeSlug) || campaignRoutes[0];
   const activeAverages = getTownAverage(activeSlug);
 
   // Postcard side preview toggle: "front" vs "back"
@@ -116,13 +112,10 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
 
   // Update active route when campaign changes
   const handleLocationChange = (slug: string) => {
-    let targetSlug = slug;
-    if (slug === "markham-woods") targetSlug = "markhamwoods";
-    if (slug === "wekiva-springs") targetSlug = "wekivasprings";
-    setActiveSlug(targetSlug);
+    setActiveSlug(slug);
     setActiveSide("front");
     if (typeof window !== "undefined") {
-      window.history.pushState({}, "", `/${targetSlug}`);
+      window.history.pushState({}, "", `/${slug}`);
     }
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -177,7 +170,7 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
   const getPricePerDoor = (basePrice: number) => {
     const price = getPeriodPrice(basePrice);
     const cost = (price / activeAverages.doors) * 100;
-    return cost.toFixed(1) + "¢";
+    return Math.round(cost) + "¢";
   };
 
   // Return the billing duration months count
@@ -191,11 +184,9 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
   // Contact Form Placeholder details based on campaign
   const getBusinessPlaceholder = () => {
     switch (activeSlug) {
-      case "markhamwoods":
       case "markham-woods": return "e.g. Heathrow Plumber";
-      case "wekivasprings":
       case "wekiva-springs": return "e.g. Sweetwater Med Spa";
-      case "longwood-lakemary": return "e.g. Lake Mary Dental";
+      case "lake-mary": return "e.g. Lake Mary Dental";
       case "sanford": return "e.g. Historic Sanford Cafe";
       case "altamonte-springs": return "e.g. Altamonte CPA";
       default: return "e.g. Local Services Co.";
@@ -368,7 +359,7 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
                   We design and mail a premium, double-sided {activeAverages.cardType || "9x12"}" full-color postcard to {activeAverages.doors.toLocaleString()} households in targeted {activeCampaign.city} neighborhoods.
                 </p>
                 <p>
-                  By splitting the mailer space among a limited lineup of non-competing local businesses, we cut print and postage costs by up to 80% compared to solo direct mail campaigns.
+                  By splitting the mailer space among a limited lineup of non-competing local businesses, we cut print and postage costs by 83% compared to solo direct mail campaigns.
                 </p>
                 <ul className="explainer-bullets">
                   <li>USPS Every Door Direct Mail (EDDM) delivery</li>
@@ -509,15 +500,15 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
                   </div>
                   <div className="town-stat-box">
                     <div className="town-stat-val">{activeAverages.income}</div>
-                    <div className="town-stat-lbl">Avg Income</div>
+                    <div className="town-stat-lbl">Avg Household Income</div>
                   </div>
                   <div className="town-stat-box">
                     <div className="town-stat-val">{activeAverages.age} Yrs</div>
                     <div className="town-stat-lbl">Average Age</div>
                   </div>
                   <div className="town-stat-box">
-                    <div className="town-stat-val">{activeAverages.homeowner}%</div>
-                    <div className="town-stat-lbl">Homeowners</div>
+                    <div className="town-stat-val">10¢</div>
+                    <div className="town-stat-lbl">Price/Door</div>
                   </div>
                   <div className="town-stat-box">
                     <div className="town-stat-val">{activeAverages.householdSize}</div>
@@ -1074,7 +1065,7 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
               <div className="stat-label">Average Household Lifespan<sup>3</sup></div>
             </Reveal>
             <Reveal variant="bottom" delay={300} className="stat-item">
-              <div className="stat-number">80%+</div>
+              <div className="stat-number">83%+</div>
               <div className="stat-label">Cost Savings Sharing Mailers<sup>4</sup></div>
             </Reveal>
           </div>
@@ -1091,7 +1082,7 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
                 <sup>3</sup> <strong>JICMAIL Direct Mail Insights:</strong> Premium local shared postcards are kept on kitchen counters, desks, or refrigerators for an average of 17 days.
               </p>
               <p>
-                <sup>4</sup> <strong>Co-op Formulas:</strong> Normal solo printing and postage to {activeAverages.doors.toLocaleString()} homes costs thousands. By splitting layout spaces, local services reach the exact same doors for pennies per door.
+                <sup>4</sup> <strong>Co-op Formulas:</strong> Normal solo printing and postage to {activeAverages.doors.toLocaleString()} homes costs about {activeAverages.doors === 2500 ? "$1,500" : "$3,000"}. By splitting layout spaces, local services reach the exact same doors for pennies per door.
               </p>
             </div>
           </Reveal>

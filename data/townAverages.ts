@@ -25,7 +25,7 @@ export const townAverages: Record<string, TownAverage> = {
     householdSize: 2.8,
     age: 54,
     residencyLength: 15,
-    homeowner: 88,
+    homeowner: 86,
     mapImageUrl: "/assets/altamonte_springs_map.png",
     cardType: "9x12",
     pricing: {
@@ -34,32 +34,32 @@ export const townAverages: Record<string, TownAverage> = {
       half: 289,
     },
   },
-  "longwood-lakemary": {
-    slug: "longwood-lakemary",
-    city: "Longwood - Lake Mary",
-    doors: 5000,
-    income: "$114,444",
-    householdSize: 2.8,
-    age: 53,
-    residencyLength: 15,
-    homeowner: 81,
-    mapImageUrl: "/assets/longwood_lakemary_map.png",
-    cardType: "9x12",
+  "lake-mary": {
+    slug: "lake-mary",
+    city: "Lake Mary",
+    doors: 2500,
+    income: "$125,283",
+    householdSize: 2.6,
+    age: 55,
+    residencyLength: 13,
+    homeowner: 91,
+    mapImageUrl: "/assets/lake_mary_map.png",
+    cardType: "6x11",
     pricing: {
-      standard: 469,
-      double: 839,
-      half: 279,
+      standard: 249,
+      double: 449,
+      half: 0,
     },
   },
-  "markhamwoods": {
-    slug: "markhamwoods",
+  "markham-woods": {
+    slug: "markham-woods",
     city: "Markham Woods",
     doors: 5000,
     income: "$211,831",
     householdSize: 3.1,
     age: 55,
     residencyLength: 14,
-    homeowner: 84,
+    homeowner: 97,
     mapImageUrl: "/assets/markham_woods_map.png",
     cardType: "9x12",
     pricing: {
@@ -76,7 +76,7 @@ export const townAverages: Record<string, TownAverage> = {
     householdSize: 2.9,
     age: 53,
     residencyLength: 12,
-    homeowner: 58,
+    homeowner: 93,
     mapImageUrl: "/assets/sanford_map.png",
     cardType: "6x11",
     pricing: {
@@ -85,34 +85,29 @@ export const townAverages: Record<string, TownAverage> = {
       half: 0,
     },
   },
-  "wekivasprings": {
-    slug: "wekivasprings",
+  "wekiva-springs": {
+    slug: "wekiva-springs",
     city: "Wekiva Springs",
     doors: 5000,
     income: "$153,491",
     householdSize: 3.1,
     age: 53,
     residencyLength: 15,
-    homeowner: 94,
+    homeowner: 95,
     mapImageUrl: "/assets/wekiva_springs_map.png",
     cardType: "9x12",
     pricing: {
-      standard: 489,
-      double: 879,
-      half: 289,
+      standard: 499,
+      double: 899,
+      half: 299,
     },
   },
 };
-
-// Aliases
-townAverages["markham-woods"] = townAverages["markhamwoods"];
-townAverages["wekiva-springs"] = townAverages["wekivasprings"];
 
 /**
  * Safely resolves town average statistics by slug alias.
  */
 export function getTownAverage(slug?: string): TownAverage {
-  if (!slug) return townAverages["markhamwoods"];
-  const normalized = slug === "markham-woods" ? "markhamwoods" : slug === "wekiva-springs" ? "wekivasprings" : slug;
-  return townAverages[normalized] || townAverages["markhamwoods"];
+  if (!slug) return townAverages["altamonte-springs"];
+  return townAverages[slug] || townAverages["altamonte-springs"];
 }

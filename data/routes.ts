@@ -73,19 +73,19 @@ export const campaignRoutes: CampaignRoute[] = [
     slots: createTownSlots(baseSlotTemplate, [])
   },
   {
-    slug: "longwood-lakemary",
-    name: "Longwood - Lake Mary",
-    tagline: "Connecting Local Businesses With Central Florida Families",
-    city: "Longwood - Lake Mary",
+    slug: "lake-mary",
+    name: "Lake Mary",
+    tagline: "Connecting Lake Mary Businesses With Local Families",
+    city: "Lake Mary",
     state: "FL",
-    size: 5000,
+    size: 2500,
     totalSlots: 16,
-    cardType: "9x12",
-    pricing: { standard: 469, double: 839, half: 279 },
-    slots: createTownSlots(baseSlotTemplate, [])
+    cardType: "6x11",
+    pricing: { standard: 249, double: 449, half: 0 },
+    slots: createTownSlots(community6x11SlotTemplate, [])
   },
   {
-    slug: "markhamwoods",
+    slug: "markham-woods",
     name: "Markham Woods",
     tagline: "Connecting Markham Woods Businesses With Local Families",
     city: "Markham Woods",
@@ -109,7 +109,7 @@ export const campaignRoutes: CampaignRoute[] = [
     slots: createTownSlots(community6x11SlotTemplate, [])
   },
   {
-    slug: "wekivasprings",
+    slug: "wekiva-springs",
     name: "Wekiva Springs",
     tagline: "Reaching Premium Wekiva Springs & Sweetwater Golf Communities",
     city: "Wekiva Springs",
@@ -117,13 +117,12 @@ export const campaignRoutes: CampaignRoute[] = [
     size: 5000,
     totalSlots: 16,
     cardType: "9x12",
-    pricing: { standard: 489, double: 899, half: 289 },
+    pricing: { standard: 499, double: 899, half: 299 },
     slots: createTownSlots(baseSlotTemplate, [])
   }
 ];
 
 export function getCampaignRoute(slug?: string): CampaignRoute {
   if (!slug) return campaignRoutes[0];
-  const norm = slug === "markham-woods" ? "markhamwoods" : slug === "wekiva-springs" ? "wekivasprings" : slug;
-  return campaignRoutes.find((c) => c.slug === norm) || campaignRoutes[0];
+  return campaignRoutes.find((c) => c.slug === slug) || campaignRoutes[0];
 }
