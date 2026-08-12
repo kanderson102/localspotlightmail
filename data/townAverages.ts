@@ -29,9 +29,9 @@ export const townAverages: Record<string, TownAverage> = {
     mapImageUrl: "/assets/altamonte_springs_map.png",
     cardType: "9x12",
     pricing: {
-      standard: 479,
-      double: 859,
-      half: 289,
+      standard: 499,
+      double: 899,
+      half: 299,
     },
   },
   "lake-mary": {

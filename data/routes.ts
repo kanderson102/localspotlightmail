@@ -69,7 +69,7 @@ export const campaignRoutes: CampaignRoute[] = [
     size: 5000,
     totalSlots: 16,
     cardType: "9x12",
-    pricing: { standard: 479, double: 859, half: 289 },
+    pricing: { standard: 499, double: 899, half: 299 },
     slots: createTownSlots(baseSlotTemplate, [])
   },
   {
