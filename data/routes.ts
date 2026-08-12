@@ -85,10 +85,10 @@ export const campaignRoutes: CampaignRoute[] = [
     slots: createTownSlots(community6x11SlotTemplate, [])
   },
   {
-    slug: "markham-woods",
-    name: "Markham Woods",
-    tagline: "Connecting Markham Woods Businesses With Local Families",
-    city: "Markham Woods",
+    slug: "longwood",
+    name: "Longwood",
+    tagline: "Reaching Premium Longwood Estates & Neighborhoods",
+    city: "Longwood",
     state: "FL",
     size: 5000,
     totalSlots: 16,

@@ -12,7 +12,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const townName = town || "Markham Woods";
+    const townName = town || "Altamonte Springs";
     const business = businessName ? businessName.trim() : "New Prospect";
     
     // Subject line formula: "The X Spotlight inquiry - Y"

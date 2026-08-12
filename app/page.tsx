@@ -53,7 +53,7 @@ function Reveal({
 }
 
 export default function HomePage({ initialSlug }: { initialSlug?: string }) {
-  const validSlugs = ["altamonte-springs", "lake-mary", "markham-woods", "sanford", "wekiva-springs"];
+  const validSlugs = ["altamonte-springs", "lake-mary", "longwood", "sanford", "wekiva-springs"];
 
   // Active location campaign slug: default to initialSlug or altamonte-springs
   const [activeSlug, setActiveSlug] = useState<string>(() => {
@@ -184,7 +184,7 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
   // Contact Form Placeholder details based on campaign
   const getBusinessPlaceholder = () => {
     switch (activeSlug) {
-      case "markham-woods": return "e.g. Heathrow Plumber";
+      case "longwood": return "e.g. Longwood Roofer";
       case "wekiva-springs": return "e.g. Sweetwater Med Spa";
       case "lake-mary": return "e.g. Lake Mary Dental";
       case "sanford": return "e.g. Historic Sanford Cafe";
@@ -318,7 +318,7 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
                 {campaignRoutes.map((c) => (
                   <button
                     key={c.slug}
-                    className={`location-btn ${activeSlug === (c.slug === "markham-woods" ? "markhamwoods" : c.slug) ? "active" : ""}`}
+                    className={`location-btn ${activeSlug === c.slug ? "active" : ""}`}
                     onClick={() => handleLocationChange(c.slug)}
                   >
                     {c.name}
@@ -472,7 +472,7 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
               {/* Map Wrapper displaying the clean map image */}
               <div className="map-wrapper">
                 <img
-                  src={activeAverages.mapImageUrl || "/assets/markham_woods_map.png"}
+                  src={activeAverages.mapImageUrl || "/assets/longwood_map.png"}
                   alt={`${activeCampaign.city} Coverage Map`}
                 />
               </div>

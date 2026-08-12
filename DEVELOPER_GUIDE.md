@@ -27,7 +27,7 @@ graph TD
 * **Slugs MUST use hyphens:** All slug keys must use exact hyphenated styling:
   - `altamonte-springs`
   - `lake-mary`
-  - `markham-woods`
+  - `longwood`
   - `sanford`
   - `wekiva-springs`
 * **Route Resolution Fallbacks:** When slug parameter is missing or invalid, resolve to `"altamonte-springs"` as the first alphabetical town and root fallback.

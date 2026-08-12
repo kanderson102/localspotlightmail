@@ -13,7 +13,7 @@ export const testimonials: TestimonialItem[] = [
     rating: 5
   },
   {
-    quote: "Hands down the best local advertising investment we've made. Homeowners along Markham Woods Road now call us by name when they see our trucks.",
+    quote: "Best advertising investment we've made. Our neighbors already know us by name now.",
     name: "Mike D.",
     business: "Mike's Landscaping",
     rating: 5
