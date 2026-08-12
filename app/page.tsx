@@ -1238,6 +1238,36 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
                     </svg>
                     <div><strong>Call/Text:</strong> 407-461-5219</div>
                   </li>
+                  <li className="contact-info-item">
+                    <a
+                      href="https://www.facebook.com/profile.php?id=61592832671289"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover-accent"
+                      style={{ display: "flex", alignItems: "center", textDecoration: "none", color: "inherit" }}
+                    >
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ marginRight: "16px", color: "var(--accent)" }}>
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                      </svg>
+                      <div>Local Spotlight Mail</div>
+                    </a>
+                  </li>
+                  <li className="contact-info-item">
+                    <a
+                      href="https://www.linkedin.com/company/local-spotlight-mail/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover-accent"
+                      style={{ display: "flex", alignItems: "center", textDecoration: "none", color: "inherit" }}
+                    >
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ marginRight: "16px", color: "var(--accent)" }}>
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                        <rect x="2" y="9" width="4" height="12" />
+                        <circle cx="4" cy="4" r="2" />
+                      </svg>
+                      <div>Local Spotlight Mail</div>
+                    </a>
+                  </li>
                 </ul>
               </div>
             </Reveal>
@@ -1339,6 +1369,34 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
               <p className="footer-desc">
                 Uniting local services and businesses to share direct mail postage and print costs, helping you reach targeted homeowners for pennies per door.
               </p>
+              <div className="footer-socials" style={{ display: "flex", gap: "16px", marginTop: "16px" }}>
+                <a
+                  href="https://www.facebook.com/profile.php?id=61592832671289"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover-accent"
+                  style={{ color: "rgba(255,255,255,0.7)", display: "inline-flex", transition: "color 0.2s" }}
+                  aria-label="Facebook"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                  </svg>
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/local-spotlight-mail/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover-accent"
+                  style={{ color: "rgba(255,255,255,0.7)", display: "inline-flex", transition: "color 0.2s" }}
+                  aria-label="LinkedIn"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                    <rect x="2" y="9" width="4" height="12" />
+                    <circle cx="4" cy="4" r="2" />
+                  </svg>
+                </a>
+              </div>
             </div>
 
             <div>
