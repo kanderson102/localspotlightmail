@@ -71,7 +71,7 @@ export default function PrivacyPage() {
             <p><strong>Local Spotlight Mail</strong></p>
             <p>Email: <a href="mailto:kyle@localspotlightmail.com">kyle@localspotlightmail.com</a></p>
             <p>Website: <a href="https://localspotlightmail.com">localspotlightmail.com</a></p>
-            <p>Phone: 407-287-4893</p>
+            <p>Phone: 407-461-5219</p>
           </div>
         </div>
       </div>
