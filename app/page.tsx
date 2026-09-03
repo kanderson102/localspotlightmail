@@ -626,110 +626,37 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
                         ) : (
                           <div
                             key={slot.id}
-                            className="postcard-slot-item status-available"
+                            className={`postcard-slot-item status-available ${activeAverages.cardType === "6x11" ? "slot-card-6x11" : ""} ${slot.type === "half" ? "slot-type-half" : ""}`}
                             style={{
                               left: `${slot.x}%`,
                               top: `${slot.y}%`,
                               width: `${slot.w}%`,
-                              height: `${slot.h}%`,
-                              display: "flex",
-                              flexDirection: "column",
-                              alignItems: "center",
-                              justifyContent: "flex-start",
-                              padding: activeAverages.cardType === "6x11"
-                                ? "6px 4px"
-                                : (slot.type === "half" ? "3px 4px" : "8px 6px")
+                              height: `${slot.h}%`
                             }}
                           >
-                            <div style={{
-                              fontSize: activeAverages.cardType === "6x11"
-                                ? "0.95rem"
-                                : (slot.type === "half" ? "0.8rem" : "1.05rem"),
-                              fontWeight: "800",
-                              color: "var(--primary-dark)",
-                              lineHeight: "1.1",
-                              marginBottom: "1px"
-                            }}>
+                            <div className="postcard-slot-title">
                               {slot.type === "standard" ? "Standard Slot" : slot.type === "double" ? "Double Slot" : "Half Slot"}
                             </div>
-                            <div style={{
-                              fontSize: activeAverages.cardType === "6x11"
-                                ? "0.75rem"
-                                : (slot.type === "half" ? "0.68rem" : "0.8rem"),
-                              fontWeight: "700",
-                              color: "var(--primary-light)",
-                              marginBottom: "1px"
-                            }}>
+                            <div className="postcard-slot-dim">
                               {activeAverages.cardType === "6x11"
                                 ? (slot.type === "double" ? '5.0" x 2.5"' : '2.5" x 2.5"')
                                 : (slot.type === "double" ? '4" x 6"' : slot.type === "half" ? '2" x 3"' : '4" x 3"')}
                             </div>
-                            <div style={{
-                              fontSize: activeAverages.cardType === "6x11"
-                                ? "1.3rem"
-                                : (slot.type === "half" ? "1.05rem" : "1.3rem"),
-                              fontWeight: "900",
-                              color: "var(--accent)",
-                              margin: "1px 0"
-                            }}>
+                            <div className="postcard-slot-price">
                               ${activeAverages.pricing[slot.type as "standard" | "double" | "half"]}
                             </div>
                             {activeAverages.cardType === "6x11" ? (
-                              <div style={{
-                                width: "92%",
-                                height: "36%",
-                                minHeight: "36px",
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                                border: "2px dashed var(--accent)",
-                                borderRadius: "8px",
-                                padding: "4px 2px",
-                                fontSize: "0.75rem",
-                                fontWeight: "800",
-                                color: "var(--accent)",
-                                marginTop: "auto",
-                                marginBottom: "4px",
-                                textAlign: "center",
-                                backgroundColor: "rgba(130, 183, 144, 0.1)",
-                                textTransform: "uppercase",
-                                letterSpacing: "0.5px"
-                              }}>
+                              <div className="postcard-slot-offer-box">
                                 YOUR OFFER / DEAL
                               </div>
                             ) : (
                               <>
                                 {slot.type !== "half" && (
-                                  <div style={{
-                                    width: "88%",
-                                    border: "1.5px dashed rgba(45, 74, 54, 0.25)",
-                                    borderRadius: "8px",
-                                    padding: "8px 4px",
-                                    fontSize: "0.75rem",
-                                    fontWeight: "800",
-                                    color: "rgba(45, 74, 54, 0.5)",
-                                    margin: "auto 0",
-                                    textAlign: "center",
-                                    backgroundColor: "rgba(45, 74, 54, 0.03)",
-                                    textTransform: "uppercase",
-                                    letterSpacing: "0.5px"
-                                  }}>
+                                  <div className="postcard-slot-ad-box">
                                     YOUR AD HERE
                                   </div>
                                 )}
-                                <div style={{
-                                  display: "inline-block",
-                                  padding: slot.type === "half" ? "2px 8px" : "3px 10px",
-                                  backgroundColor: "rgba(130, 183, 144, 0.15)",
-                                  color: "var(--accent)",
-                                  borderRadius: "9999px",
-                                  fontSize: slot.type === "half" ? "0.6rem" : "0.68rem",
-                                  fontWeight: "700",
-                                  textTransform: "uppercase",
-                                  letterSpacing: "0.5px",
-                                  marginTop: slot.type === "half" ? "auto" : "0",
-                                  marginBottom: slot.type === "half" ? "2px" : "4px"
-                                }}>
+                                <div className="postcard-slot-badge-avail">
                                   Available
                                 </div>
                               </>
@@ -793,110 +720,37 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
                         ) : (
                           <div
                             key={slot.id}
-                            className="postcard-slot-item status-available"
+                            className={`postcard-slot-item status-available ${activeAverages.cardType === "6x11" ? "slot-card-6x11" : ""} ${slot.type === "half" ? "slot-type-half" : ""}`}
                             style={{
                               left: `${slot.x}%`,
                               top: `${slot.y}%`,
                               width: `${slot.w}%`,
-                              height: `${slot.h}%`,
-                              display: "flex",
-                              flexDirection: "column",
-                              alignItems: "center",
-                              justifyContent: "flex-start",
-                              padding: activeAverages.cardType === "6x11"
-                                ? "6px 4px"
-                                : (slot.type === "half" ? "3px 4px" : "8px 6px")
+                              height: `${slot.h}%`
                             }}
                           >
-                            <div style={{
-                              fontSize: activeAverages.cardType === "6x11"
-                                ? "0.95rem"
-                                : (slot.type === "half" ? "0.8rem" : "1.05rem"),
-                              fontWeight: "800",
-                              color: "var(--primary-dark)",
-                              lineHeight: "1.1",
-                              marginBottom: "1px"
-                            }}>
+                            <div className="postcard-slot-title">
                               {slot.type === "standard" ? "Standard Slot" : slot.type === "double" ? "Double Slot" : "Half Slot"}
                             </div>
-                            <div style={{
-                              fontSize: activeAverages.cardType === "6x11"
-                                ? "0.75rem"
-                                : (slot.type === "half" ? "0.68rem" : "0.8rem"),
-                              fontWeight: "700",
-                              color: "var(--primary-light)",
-                              marginBottom: "1px"
-                            }}>
+                            <div className="postcard-slot-dim">
                               {activeAverages.cardType === "6x11"
                                 ? (slot.type === "double" ? '5.0" x 2.5"' : '2.5" x 2.5"')
                                 : (slot.type === "double" ? '4" x 6"' : slot.type === "half" ? '2" x 3"' : '4" x 3"')}
                             </div>
-                            <div style={{
-                              fontSize: activeAverages.cardType === "6x11"
-                                ? "1.3rem"
-                                : (slot.type === "half" ? "1.05rem" : "1.3rem"),
-                              fontWeight: "900",
-                              color: "var(--accent)",
-                              margin: "1px 0"
-                            }}>
+                            <div className="postcard-slot-price">
                               ${activeAverages.pricing[slot.type as "standard" | "double" | "half"]}
                             </div>
                             {activeAverages.cardType === "6x11" ? (
-                              <div style={{
-                                width: "92%",
-                                height: "36%",
-                                minHeight: "36px",
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                                border: "2px dashed var(--accent)",
-                                borderRadius: "8px",
-                                padding: "4px 2px",
-                                fontSize: "0.75rem",
-                                fontWeight: "800",
-                                color: "var(--accent)",
-                                marginTop: "auto",
-                                marginBottom: "4px",
-                                textAlign: "center",
-                                backgroundColor: "rgba(130, 183, 144, 0.1)",
-                                textTransform: "uppercase",
-                                letterSpacing: "0.5px"
-                              }}>
+                              <div className="postcard-slot-offer-box">
                                 YOUR OFFER / DEAL
                               </div>
                             ) : (
                               <>
                                 {slot.type !== "half" && (
-                                  <div style={{
-                                    width: "88%",
-                                    border: "1.5px dashed rgba(45, 74, 54, 0.25)",
-                                    borderRadius: "8px",
-                                    padding: "8px 4px",
-                                    fontSize: "0.75rem",
-                                    fontWeight: "800",
-                                    color: "rgba(45, 74, 54, 0.5)",
-                                    margin: "auto 0",
-                                    textAlign: "center",
-                                    backgroundColor: "rgba(45, 74, 54, 0.03)",
-                                    textTransform: "uppercase",
-                                    letterSpacing: "0.5px"
-                                  }}>
+                                  <div className="postcard-slot-ad-box">
                                     YOUR AD HERE
                                   </div>
                                 )}
-                                <div style={{
-                                  display: "inline-block",
-                                  padding: slot.type === "half" ? "2px 8px" : "3px 10px",
-                                  backgroundColor: "rgba(130, 183, 144, 0.15)",
-                                  color: "var(--accent)",
-                                  borderRadius: "9999px",
-                                  fontSize: slot.type === "half" ? "0.6rem" : "0.68rem",
-                                  fontWeight: "700",
-                                  textTransform: "uppercase",
-                                  letterSpacing: "0.5px",
-                                  marginTop: slot.type === "half" ? "auto" : "0",
-                                  marginBottom: slot.type === "half" ? "2px" : "4px"
-                                }}>
+                                <div className="postcard-slot-badge-avail">
                                   Available
                                 </div>
                               </>
