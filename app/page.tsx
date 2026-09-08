@@ -640,7 +640,7 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
                             <div className="postcard-slot-dim">
                               {activeAverages.cardType === "6x11"
                                 ? (slot.type === "double" ? '5.0" x 2.5"' : '2.5" x 2.5"')
-                                : (slot.type === "double" ? '4" x 6"' : slot.type === "half" ? '2" x 3"' : '4" x 3"')}
+                                : (slot.type === "double" ? '6" x 4"' : slot.type === "half" ? '3" x 2"' : '3" x 4"')}
                             </div>
                             <div className="postcard-slot-price">
                               ${activeAverages.pricing[slot.type as "standard" | "double" | "half"]}
@@ -734,7 +734,7 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
                             <div className="postcard-slot-dim">
                               {activeAverages.cardType === "6x11"
                                 ? (slot.type === "double" ? '5.0" x 2.5"' : '2.5" x 2.5"')
-                                : (slot.type === "double" ? '4" x 6"' : slot.type === "half" ? '2" x 3"' : '4" x 3"')}
+                                : (slot.type === "double" ? '6" x 4"' : slot.type === "half" ? '3" x 2"' : '3" x 4"')}
                             </div>
                             <div className="postcard-slot-price">
                               ${activeAverages.pricing[slot.type as "standard" | "double" | "half"]}
@@ -839,7 +839,7 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
             <Reveal variant="bottom" delay={0} className="pricing-card popular">
               <div className="pricing-badge">Most Popular</div>
               <h4>Standard Ad Spot</h4>
-              <div className="dimensions">Ad Size: {activeAverages.cardType === "6x11" ? '2.5" x 2.5"' : '4" x 3"'}</div>
+              <div className="dimensions">Ad Size: {activeAverages.cardType === "6x11" ? '2.5" x 2.5"' : '3" x 4"'}</div>
 
               {renderPriceDisplay(activeAverages.pricing.standard)}
 
@@ -857,7 +857,7 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
             {/* Double Slot Card */}
             <Reveal variant="bottom" delay={100} className="pricing-card">
               <h4>Double Ad Spot</h4>
-              <div className="dimensions">Ad Size: {activeAverages.cardType === "6x11" ? '5" x 2.5"' : '4" x 6"'}</div>
+              <div className="dimensions">Ad Size: {activeAverages.cardType === "6x11" ? '5" x 2.5"' : '6" x 4"'}</div>
 
               {renderPriceDisplay(activeAverages.pricing.double)}
 
@@ -876,7 +876,7 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
             {activeAverages.pricing.half > 0 && (
               <Reveal variant="bottom" delay={200} className="pricing-card">
                 <h4>Half Ad Spot</h4>
-                <div className="dimensions">Ad Size: 2" x 3"</div>
+                <div className="dimensions">Ad Size: 3" x 2"</div>
 
                 {renderPriceDisplay(activeAverages.pricing.half)}
 
@@ -1090,7 +1090,7 @@ export default function HomePage({ initialSlug }: { initialSlug?: string }) {
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ marginRight: "16px", color: "var(--accent)" }}>
                       <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
                     </svg>
-                    <div><strong>Call:</strong> 407-461-5219</div>
+                    <div><strong>Call/Text:</strong> 407-461-5219</div>
                   </li>
                   <li className="contact-info-item">
                     <a

@@ -826,7 +826,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .postcard-slot-item.status-available {
-  border: 1px solid rgba(45, 74, 54, 0.12);
+  border: 1.5px solid rgba(45, 74, 54, 0.14);
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
@@ -834,11 +834,11 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: flex-start;
   text-align: center;
   color: var(--primary);
-  padding: clamp(2px, 0.8cqw, 8px) clamp(2px, 0.6cqw, 6px);
+  padding: clamp(3px, 1.2cqw, 14px) clamp(2px, 0.8cqw, 10px);
 }
 
 .postcard-slot-item.status-available.slot-card-6x11 {
-  padding: clamp(2px, 0.6cqw, 6px) clamp(2px, 0.5cqw, 4px);
+  padding: clamp(3px, 1.0cqw, 10px) clamp(2px, 0.6cqw, 8px);
 }
 
 .postcard-slot-item.status-available:hover {
@@ -860,113 +860,117 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
   background-color: #f1f5f9;
   color: #64748b;
-  font-weight: 600;
-  font-size: clamp(7.5px, 1.4cqw, 13px);
+  font-weight: 700;
+  font-size: clamp(8px, 1.8cqw, 18px);
   text-align: center;
-  padding: clamp(2px, 0.8cqw, 8px);
+  padding: clamp(3px, 1.2cqw, 14px);
 }
 
 .postcard-slot-title {
   font-weight: 800;
   color: var(--primary-dark);
-  line-height: 1.1;
-  font-size: clamp(8.5px, 1.6cqw, 15px);
-  margin-bottom: clamp(0px, 0.2cqw, 2px);
+  line-height: 1.15;
+  font-size: clamp(8.5px, 2.4cqw, 22px);
+  margin-bottom: clamp(0px, 0.3cqw, 4px);
 }
 
 .postcard-slot-item.slot-card-6x11 .postcard-slot-title {
-  font-size: clamp(8px, 1.45cqw, 14px);
+  font-size: clamp(8px, 2.1cqw, 18px);
 }
 
 .postcard-slot-dim {
   font-weight: 700;
   color: var(--primary-light);
-  line-height: 1.1;
-  font-size: clamp(6.5px, 1.2cqw, 12px);
-  margin-bottom: clamp(0px, 0.2cqw, 2px);
+  line-height: 1.15;
+  font-size: clamp(6.5px, 1.7cqw, 15px);
+  margin-bottom: clamp(0px, 0.3cqw, 4px);
+}
+
+.postcard-slot-item.slot-card-6x11 .postcard-slot-dim {
+  font-size: clamp(6.5px, 1.5cqw, 13px);
 }
 
 .postcard-slot-price {
   font-weight: 900;
   color: var(--accent);
   line-height: 1.1;
-  font-size: clamp(10px, 2.2cqw, 20px);
-  margin: clamp(0px, 0.25cqw, 2px) 0;
+  font-size: clamp(11px, 3.6cqw, 32px);
+  margin: clamp(0px, 0.4cqw, 6px) 0;
 }
 
 .postcard-slot-item.slot-card-6x11 .postcard-slot-price {
-  font-size: clamp(9.5px, 2.0cqw, 19px);
+  font-size: clamp(10px, 2.9cqw, 26px);
 }
 
 .postcard-slot-offer-box {
   width: 92%;
-  height: clamp(16px, 4cqw, 34px);
+  height: clamp(18px, 5.5cqw, 48px);
   display: flex;
   align-items: center;
   justify-content: center;
-  border: clamp(1px, 0.2cqw, 2px) dashed var(--accent);
-  border-radius: clamp(3px, 0.8cqw, 8px);
-  padding: clamp(1px, 0.3cqw, 4px) clamp(1px, 0.2cqw, 2px);
-  font-size: clamp(6px, 1.15cqw, 11px);
+  border: clamp(1px, 0.25cqw, 2px) dashed var(--accent);
+  border-radius: clamp(3px, 0.9cqw, 8px);
+  padding: clamp(1px, 0.4cqw, 6px) clamp(1px, 0.3cqw, 4px);
+  font-size: clamp(6.5px, 1.6cqw, 14px);
   font-weight: 800;
   color: var(--accent);
   margin-top: auto;
-  margin-bottom: clamp(1px, 0.4cqw, 4px);
+  margin-bottom: clamp(1px, 0.5cqw, 6px);
   text-align: center;
   background-color: rgba(130, 183, 144, 0.1);
   text-transform: uppercase;
-  letter-spacing: clamp(0.2px, 0.06cqw, 0.5px);
-  line-height: 1.1;
+  letter-spacing: clamp(0.2px, 0.08cqw, 0.6px);
+  line-height: 1.15;
 }
 
 .postcard-slot-ad-box {
-  width: 88%;
-  border: clamp(1px, 0.2cqw, 1.5px) dashed rgba(45, 74, 54, 0.25);
-  border-radius: clamp(3px, 0.8cqw, 8px);
-  padding: clamp(2px, 0.7cqw, 8px) clamp(2px, 0.4cqw, 4px);
-  font-size: clamp(6px, 1.15cqw, 11px);
+  width: 90%;
+  border: clamp(1px, 0.25cqw, 2px) dashed rgba(45, 74, 54, 0.28);
+  border-radius: clamp(3px, 0.9cqw, 8px);
+  padding: clamp(3px, 1.6cqw, 16px) clamp(2px, 0.8cqw, 8px);
+  font-size: clamp(6.5px, 1.7cqw, 14.5px);
   font-weight: 800;
-  color: rgba(45, 74, 54, 0.5);
+  color: rgba(45, 74, 54, 0.55);
   margin: auto 0;
   text-align: center;
   background-color: rgba(45, 74, 54, 0.03);
   text-transform: uppercase;
-  letter-spacing: clamp(0.2px, 0.06cqw, 0.5px);
-  line-height: 1.1;
+  letter-spacing: clamp(0.2px, 0.08cqw, 0.6px);
+  line-height: 1.15;
 }
 
 .postcard-slot-badge-avail {
   display: inline-block;
-  padding: clamp(1px, 0.25cqw, 3px) clamp(4px, 1.1cqw, 10px);
-  background-color: rgba(130, 183, 144, 0.15);
+  padding: clamp(1px, 0.4cqw, 5px) clamp(4px, 1.6cqw, 14px);
+  background-color: rgba(130, 183, 144, 0.18);
   color: var(--accent);
   border-radius: 9999px;
-  font-size: clamp(5.5px, 1.0cqw, 10px);
+  font-size: clamp(5.5px, 1.3cqw, 12px);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: clamp(0.2px, 0.05cqw, 0.5px);
+  letter-spacing: clamp(0.2px, 0.08cqw, 0.6px);
   margin-top: auto;
-  margin-bottom: clamp(1px, 0.35cqw, 4px);
-  line-height: 1.1;
+  margin-bottom: clamp(1px, 0.4cqw, 6px);
+  line-height: 1.15;
 }
 
 /* Half slot adjustments on 9x12 */
 .postcard-slot-item.slot-type-half {
-  padding: clamp(1px, 0.4cqw, 4px) clamp(2px, 0.4cqw, 4px);
+  padding: clamp(1px, 0.6cqw, 6px) clamp(2px, 0.6cqw, 6px);
 }
 .postcard-slot-item.slot-type-half .postcard-slot-title {
-  font-size: clamp(7px, 1.2cqw, 11px);
+  font-size: clamp(7.5px, 1.7cqw, 14px);
 }
 .postcard-slot-item.slot-type-half .postcard-slot-dim {
-  font-size: clamp(5.5px, 0.95cqw, 9.5px);
+  font-size: clamp(6px, 1.3cqw, 11px);
 }
 .postcard-slot-item.slot-type-half .postcard-slot-price {
-  font-size: clamp(8.5px, 1.5cqw, 14px);
+  font-size: clamp(9px, 2.4cqw, 20px);
 }
 .postcard-slot-item.slot-type-half .postcard-slot-badge-avail {
-  font-size: clamp(5px, 0.8cqw, 8.5px);
-  padding: clamp(1px, 0.15cqw, 2px) clamp(2px, 0.6cqw, 6px);
-  margin-bottom: clamp(1px, 0.15cqw, 2px);
+  font-size: clamp(5px, 1.1cqw, 9.5px);
+  padding: clamp(1px, 0.25cqw, 3px) clamp(2px, 0.8cqw, 8px);
+  margin-bottom: clamp(1px, 0.2cqw, 3px);
 }
 
 /* About Section */
